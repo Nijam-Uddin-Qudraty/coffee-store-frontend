@@ -16,7 +16,9 @@ const router = createBrowserRouter([
   { path: "/", 
     Component: MainLayout,
     children:[
-      {index: true,
+      {
+        index: true,
+        loader:()=>fetch("http://localhost:3000/coffees"),
         Component: Home
       },
       {

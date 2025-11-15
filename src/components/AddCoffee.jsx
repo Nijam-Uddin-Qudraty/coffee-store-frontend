@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
     const handleAddCoffee=e=>{
@@ -9,13 +10,21 @@ const AddCoffee = () => {
         console.log(newCoffee)
         
         // data fetching     
-        fetch("http://localhost:3000/coffee",{
+        fetch("http://localhost:3000/coffees",{
         method: "POST",
         headers: {
             'content-type': 'application/json'
         },
         body: JSON.stringify(newCoffee)
     }).then((res)=>res.json()).then(data=>console.log(data))
+    Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+    form.reset()
     }
     return (
         <div className='px-28 py-18 bg-accent '>
@@ -78,7 +87,7 @@ const AddCoffee = () => {
                 <legend className="fieldset-legend">Photo</legend>
                 <input name='Photo' type="text" className="input w-full" placeholder="Enter coffee Photo" />
                 </fieldset>
-            <button className='btn btn-secondary mt-6 text-primary w-full' type="submit">Add Coffee</button>
+            <button className='btn btn-secondary mt-6 text-primary font-Rancho w-full' type="submit">Add Coffee</button>
             </div>
 
             </form>

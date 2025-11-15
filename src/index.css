@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "daisyui/theme" {
@@ -6,4 +7,15 @@
   --color-primary: rgb(51, 26, 21);
   --color-secondary: rgb(210, 180, 140);
   --color-accent: rgb(244, 243, 240);
+}
+
+body {
+  font-family: "Raleway", sans-serif; /* default text */
+}
+
+.font-Rancho {
+  font-family: "Rancho", cursive;
+}
+.font-Raleway {
+  font-family: "Raleway", sans-serif;
 }
