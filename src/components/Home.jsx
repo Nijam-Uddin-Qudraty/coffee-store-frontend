@@ -5,7 +5,6 @@ import CoffeeCard from './CoffeeCard';
 const Home = () => {
     const coffees = useLoaderData();
     const [sCoffee, setsCoffee] = useState(coffees)
-    console.log(coffees)
     return (
         <div>
             <div className='text-center space-y-4'>

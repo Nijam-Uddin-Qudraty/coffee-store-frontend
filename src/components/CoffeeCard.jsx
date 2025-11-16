@@ -67,7 +67,7 @@ export default function CoffeeCard({coffee,setsCoffee}) {
                 <div className="card-actions justify-end">
                     <div className='join join-vertical  space-y-2'>
                         <Link to={`/coffee/${_id}`} className="btn btn-secondary"><FaEye/></Link>
-                        <button className="btn btn-primary"><FaPen/></button>
+                        <Link to={`/updateCoffee/${_id}`} className="btn btn-primary"><FaPen/></Link>
                         <button onClick={()=>handleDelete(_id)} className="btn btn-primary"><MdDelete/></button>
                     </div>                    
                 </div>

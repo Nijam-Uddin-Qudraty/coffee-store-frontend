@@ -16,14 +16,18 @@ const AddCoffee = () => {
             'content-type': 'application/json'
         },
         body: JSON.stringify(newCoffee)
-    }).then((res)=>res.json()).then(data=>console.log(data))
-    Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Your work has been saved",
-  showConfirmButton: false,
-  timer: 1500
-});
+    }).then((res)=>res.json()).then(data=>{
+        if (data.insertedId) {
+                 Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your work has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                    });
+        }
+    })
+   
     form.reset()
     }
     return (
@@ -74,8 +78,8 @@ const AddCoffee = () => {
                     <input name='Taste' type="text" className="input w-full" placeholder="Enter coffee Taste" />
                     </fieldset>
                     <fieldset className="fieldset">
-                    <legend className="fieldset-legend">Category</legend>
-                    <input name='Category' type="text" className="input w-full" placeholder="Enter coffee Category" />
+                    <legend className="fieldset-legend">Price</legend>
+                    <input name='Price' type="text" className="input w-full" placeholder="Enter coffee Price" />
                     </fieldset>
                     <fieldset className="fieldset">
                     <legend className="fieldset-legend">Details</legend>
