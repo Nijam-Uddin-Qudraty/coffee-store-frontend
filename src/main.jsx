@@ -11,6 +11,7 @@ import MainLayout from './layouts/MainLayout.jsx';
 import Home from './components/Home.jsx';
 import AddCoffee from './components/AddCoffee.jsx';
 import UpdateCoffee from './components/UpdateCoffee.jsx';
+import ViewCoffee from './components/ViewCoffee.jsx';
 
 const router = createBrowserRouter([
   { path: "/", 
@@ -28,7 +29,12 @@ const router = createBrowserRouter([
       {
         path: 'updateCoffee',
         Component: UpdateCoffee
-      }
+      },
+      {
+        path: 'coffee/:id',
+        loader: ({params})=>fetch(`http://localhost:3000/coffees/${params.id}`),
+        Component: ViewCoffee
+      },
     ] },
 ]);
 

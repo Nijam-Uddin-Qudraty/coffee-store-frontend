@@ -2,9 +2,10 @@ import React from 'react'
 import { FaEye, FaPen } from 'react-icons/fa'
 import { FaDeleteLeft } from 'react-icons/fa6'
 import { MdDelete } from 'react-icons/md'
+import { Link } from 'react-router'
 import Swal from 'sweetalert2'
 
-export default function CoffeeCard({coffee}) {
+export default function CoffeeCard({coffee,setsCoffee}) {
     const {_id,name, Count, Price, Photo} = coffee
     const handleDelete=(_id)=>{
         console.log(_id)
@@ -24,12 +25,21 @@ export default function CoffeeCard({coffee}) {
             cancelButtonText: "No, cancel!",
             reverseButtons: true
             }).then((result) => {
+                
             if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-                });
+                    fetch(`http://localhost:3000/coffees/${_id}`,{
+                    method : "DELETE"
+                }).then(res=>res.json()).then(data=>{
+                        if(data.deletedCount){
+                            swalWithBootstrapButtons.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            console.log(deletedCount)
+                            setsCoffee(prev => prev.filter(coffee => coffee._id !== _id));
+                        }
+                    })
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
@@ -56,7 +66,7 @@ export default function CoffeeCard({coffee}) {
                 </div>
                 <div className="card-actions justify-end">
                     <div className='join join-vertical  space-y-2'>
-                        <button className="btn btn-secondary"><FaEye/></button>
+                        <Link to={`/coffee/${_id}`} className="btn btn-secondary"><FaEye/></Link>
                         <button className="btn btn-primary"><FaPen/></button>
                         <button onClick={()=>handleDelete(_id)} className="btn btn-primary"><MdDelete/></button>
                     </div>                    
