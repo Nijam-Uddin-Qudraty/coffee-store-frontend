@@ -14,6 +14,7 @@ import UpdateCoffee from './components/UpdateCoffee.jsx';
 import ViewCoffee from './components/ViewCoffee.jsx';
 import AuthContextProvider from './components/context/AuthContextProvider.jsx';
 import Signup from './components/Users/Signup.jsx';
+import Signin from './components/Users/Signin.jsx';
 
 const router = createBrowserRouter([
   { path: "/", 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         Component: Signup
+      },
+      {
+        path:'signin',
+        Component: Signin
       }
     ] },
 ]);

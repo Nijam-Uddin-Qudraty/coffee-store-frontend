@@ -3,9 +3,10 @@ import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../context/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
+import api from '../context/api';
 
 export default function Signup() {
-    const {createUser,signInWithGoogle,userApi} = useContext(AuthContext)
+    const {createUser,signInWithGoogle,} = useContext(AuthContext)
   const handleSignup=e=>{
             e.preventDefault();
             const form = e.target;
@@ -24,7 +25,7 @@ export default function Signup() {
                         lastSignInTime: result.user?.metadata?.lastSignInTime
                     }
 
-                    fetch(userApi,{
+                    fetch(api,{
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'
@@ -63,7 +64,7 @@ export default function Signup() {
     //             creationTime: user?.metadata?.creationTime,
     //             lastSignInTime: user?.metadata?.lastSignInTime
     //             }
-    //             fetch(userApi,
+    //             fetch(api,
     //                 {
     //                     method: 'POST',
     //                     headers: {
@@ -90,13 +91,13 @@ export default function Signup() {
     // }
     return (
         <div className='px-28 py-18 bg-accent '>
-    <div className='text-center px-42 space-y-8'>
-        <div className='flex justify-center'>
-            <h1 className='font-Rancho text-3xl text-shadow-lg'>Sign Up</h1>
-        </div>
-        <div>
-            Create your user account by filling in your personal details below.
-        </div>
+        <div className='text-center px-42 space-y-8'>
+            <div className='flex justify-center'>
+                <h1 className='font-Rancho text-3xl text-shadow-lg'>Sign Up</h1>
+            </div>
+            <div>
+                Create your user account by filling in your personal details below.
+            </div>
     </div>
 
     <form onSubmit={handleSignup}>
